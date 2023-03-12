@@ -20,4 +20,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 ]
 
-handler404 = "django_404_project.views.page_not_found_view"
+handler404 = "IT_news.views.page_not_found_view"
