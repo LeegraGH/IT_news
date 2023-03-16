@@ -1,0 +1,38 @@
+.avatar{
+    display: block;
+    margin: 125px auto 0 auto;
+}
+
+.wrong{
+    text-align: center;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 28px;
+    color: #2F2222;
+    margin: 40px 0;
+    white-space: nowrap;
+}
+
+.back-btn{
+    display: flex;
+    width: 172px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-bottom: 125px;
+    text-align: center;
+    padding: 10px 16px;
+    background: rgba(93, 113, 221, 0.05);
+    border-radius: 8px;
+}
+
+.back-text{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    color: #5D71DD;
+    white-space: nowrap;
+}
