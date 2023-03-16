@@ -1,0 +1,95 @@
+@font-face {
+    font-family: 'Futura PT';
+    src: url('../fonts/FuturaPT-Book.eot');
+    src: local('Futura PT Book'), local('FuturaPT-Book'),
+        url('../fonts/FuturaPT-Book.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/FuturaPT-Book.woff') format('woff'),
+        url('../fonts/FuturaPT-Book.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body{
+    background: #E5E5E5;    
+    font-family: 'Futura PT';
+}
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+}
+
+.top{
+    flex-grow: 1;
+}
+
+a{
+    text-decoration: none;
+}
+
+nav a{
+    font-size: 18px;
+    color: #2F2222;
+}
+
+nav a:hover{
+    text-decoration-line: underline;
+    color: #5D71DD;
+}
+
+header{
+    padding: 7px 0;
+    background: #FFFF;
+}
+
+.nav__pages .list__pages{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    gap: 40px;
+}
+
+.nav__pages .list__pages li{
+    display: inline;
+    margin: 0 auto;
+    white-space: nowrap;
+}
+
+.contact{
+    display: flex;
+    flex-wrap: nowrap;
+    font-size: 18px;
+    color: #5D71DD;
+    white-space: nowrap;
+    cursor: pointer;
+    gap: 10px;
+}
+
+.call a{
+    color: #5D71DD;
+}
+
+.call a:hover{
+    text-decoration-line: none;
+}
+
+footer{
+    background: rgba(93, 113, 221, 0.05);
+    height: 273px;
+}
+
+.footer__logo{
+    text-align: center;
+    margin: 40px 0;
+}
+
+.all__rights{
+    margin-top: 64px;
+    text-align: center;
+    font-size: 14px;
+    color: #2F2222;
+}

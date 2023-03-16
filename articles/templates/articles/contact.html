@@ -1,9 +1,50 @@
 {% extends 'articles/base.html' %}
+{% load static %}
 
 {% block css %}
-
+    <link rel="stylesheet" href="{% static 'css/contact.css' %}">
 {% endblock %}
 
 {% block main %}
-
+    <section class="contact__block">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 offset-md-1">
+                    <h2 class="contact__article"><b>Контактная информация</b></h2>
+                    <div class="contact call">
+                        <img src="{% static 'image/phone-call.svg' %}" alt="">
+                        <a href="tel:+798788787">+7 (987) 887-87</a>
+                    </div>
+                    <div class="contact point">
+                        <img src="{% static 'image/point.svg' %}" alt="">
+                        <div class="address">г. Москва, пр-кт Вернадского, д. 78</div>
+                    </div>
+                    <div class="social">
+                        <a href=""><img src="{% static 'image/Facebook.svg' %}" alt=""></a>
+                        <a href=""><img src="{% static 'image/VK.svg' %}" alt=""></a>
+                        <a href=""><img src="{% static 'image/Instagram.svg' %}" alt=""></a>
+                        <a href=""><img src="{% static 'image/Twitter.svg' %}" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-md-5 offset-md-2">
+                    <div class="write_us">
+                        <h2 class="contact__article"><b>Напишите нам</b></h2>
+                        <form class="callback__form" action="{% url 'contact' %}" method="post">
+                            {% csrf_token %}
+                            {{ form.username }}
+                            {{ form.email }}
+                            {{ form.message }}
+                            <!-- <input type="text" name="" id="" placeholder="Ваше имя">
+                            <input type="email" name="" id="" placeholder="Телефон или E-mail">
+                            <textarea name="" id="" placeholder="Сообщение..."></textarea> -->
+                            <button type="submit">
+                                <div class="send">Отправить</div>
+                                <img src="{% static 'image/arrow-right.svg' %}" alt="">
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock %}

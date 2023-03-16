@@ -1,9 +1,30 @@
 {% extends 'articles/base.html' %}
+{% load static %}
 
 {% block css %}
-
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
 {% endblock %}
-
 {% block main %}
-
+    <div class="preview"></div>
+    <section class="block__articles">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="first_type__article"></div>
+                    <div class="second_type__article"></div>
+                    <div class="third_type__article"></div>
+                </div>
+                <div class="col-md-3">
+                    <div class="popular__news"></div>
+                    <form class="subscribe__form" action="">
+                        <input type="email" name="" id="">
+                        <button type="submit">
+                            <div class="subscribe">Подписаться</div>
+                            <img src="{% static 'image/arrow-right.svg' %}" alt="">
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock %}

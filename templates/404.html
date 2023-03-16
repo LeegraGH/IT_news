@@ -1,10 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <p>hello world!</p>
-</body>
-</html>
+{% extends 'articles/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/404.css' %}">
+{% endblock %}
+
+{% block main %}
+    <section class="error-404">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-6 align-self-center">
+                    <img class="avatar" src="{% static 'image/avatar404.svg' %}" alt="">
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-4 align-self-center wrong">Что-то пошло не так...</div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-4 align-self-center">
+                    <a class="back-btn" href="{{ return_path }}">
+                        <img src="{% static 'image/arrow-left.svg' %}" alt="">
+                        <div class="back-text">Вернуться назад</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
