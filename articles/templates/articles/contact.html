@@ -8,8 +8,8 @@
 {% block main %}
     <section class="contact__block">
         <div class="container">
-            <div class="row">
-                <div class="col-md-3 offset-md-1">
+            <div class="row wrap">
+                <div class="col-md-3 offset-md-1 del__prop move__center">
                     <h2 class="contact__article"><b>Контактная информация</b></h2>
                     <div class="contact call">
                         <img src="{% static 'image/phone-call.svg' %}" alt="">
@@ -26,7 +26,7 @@
                         <a href=""><img src="{% static 'image/Twitter.svg' %}" alt=""></a>
                     </div>
                 </div>
-                <div class="col-md-5 offset-md-2">
+                <div class="col-md-5 offset-md-2 del__prop">
                     <div class="write_us">
                         <h2 class="contact__article"><b>Напишите нам</b></h2>
                         <form class="callback__form" action="{% url 'contact' %}" method="post">

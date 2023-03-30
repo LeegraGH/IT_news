@@ -9,20 +9,226 @@
     <section class="block__articles">
         <div class="container">
             <div class="row">
-                <div class="col-md-9">
-                    <div class="first_type__article"></div>
-                    <div class="second_type__article"></div>
-                    <div class="third_type__article"></div>
+                <div class="col-md-9 wrap">
+                    <div class="column__articles">
+                        {% if articles.0 %}
+                        <a href="" class="article__link">
+                            <div class="first_type__article">
+                                <div class="other_info__article">
+                                    <div class="type__category">
+                                        {{ articles.0.category }}
+                                    </div>
+                                    <div class="date__publish">{{ articles.0.date }}</div>
+                                </div>
+                                <div class="main_info__article">
+                                    <h4 class="name__article"><b>{{ articles.0.name }}</b></h4>
+                                    <div class="descr__article">{{ articles.0.description }}</div>
+                                </div>
+                            </div>
+                        </a>
+                        {% endif %}
+                        {% if articles.1 %}
+                        <div class="second_type__article">
+                            <a href="" class="article__link one">
+                                <div class="first__block">
+                                    <div class="other_info__article">
+                                        <div class="type__category">
+                                            {{ articles.1.category }}
+                                        </div>
+                                        <div class="date__publish">{{ articles.1.date }}</div>
+                                    </div>
+                                    <div class="main_info__article">
+                                        <h4 class="name__article"><b>{{ articles.1.name }}</b></h4>
+                                        <div class="descr__article">{{ articles.1.description }}</div>
+                                    </div>
+                                </div>
+                            </a>
+                            {% if articles.2 %}
+                            <a href="" class="article__link two">
+                                <div class="second__block">
+                                    <div class="main__info">
+                                        <div class="type__category">
+                                            {{ articles.2.category }}
+                                        </div>
+                                        <h4 class="name__article"><b>{{ articles.2.name }}</b></h4>
+                                    </div>
+                                    <div class="date__publish">{{ articles.2.date }}</div>
+                                </div>
+                            </a>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+                        {% if articles.3 %}
+                        <div class="third_type__article">
+                            <a href="" class="article__link">
+                                <div class="sub_one__last">
+                                    <div class="main__info">
+                                        <div class="type__category">
+                                            {{ articles.3.category }}
+                                        </div>
+                                        <h4 class="name__article"><b>{{ articles.3.name }}</b></h4>
+                                    </div>
+                                    <div class="date__publish">{{ articles.3.date }}</div>
+                                </div>
+                            </a>
+                            <div class="subs__last">
+                                {% if articles.4 %}
+                                <a href="" class="article__link">
+                                    <div class="sub_two__last">
+                                        <div class="other_info__article">
+                                            <div class="type__category">
+                                                {{ articles.4.category }}
+                                            </div>
+                                            <div class="date__publish">{{ articles.4.date }}</div>
+                                        </div>
+                                        <div class="main_info__article">
+                                            <h4 class="name__article"><b>{{ articles.4.name }}</b></h4>
+                                        </div>
+                                    </div>
+                                </a>
+                                {% endif %}
+                                {% if articles.5 %}
+                                <a href="" class="article__link">
+                                    <div class="sub_three__last">
+                                        <div class="other_info__article">
+                                            <div class="type__category">
+                                                {{ articles.5.category }}
+                                            </div>
+                                            <div class="date__publish">{{ articles.5.date }}</div>
+                                        </div>
+                                        <div class="main_info__article">
+                                            <h4 class="name__article"><b>{{ articles.5.name }}</b></h4>
+                                        </div>
+                                    </div>
+                                </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% if articles.6 %}
+                        <div class="second_type__article">
+                            <a href="" class="article__link one">
+                                <div class="first__block">
+                                    <div class="other_info__article">
+                                        <div class="type__category">
+                                            {{ articles.6.category }}
+                                        </div>
+                                        <div class="date__publish">{{ articles.6.date }}</div>
+                                    </div>
+                                    <div class="main_info__article">
+                                        <h4 class="name__article"><b>{{ articles.6.name }}</b></h4>
+                                        <div class="descr__article">{{ articles.6.description }}</div>
+                                    </div>
+                                </div>
+                            </a>
+                            {% if articles.7 %}
+                            <a href="" class="article__link two">
+                                <div class="second__block">
+                                    <div class="main__info">
+                                        <div class="type__category">
+                                            {{ articles.7.category }}
+                                        </div>
+                                        <h4 class="name__article"><b>{{ articles.7.name }}</b></h4>
+                                    </div>
+                                    <div class="date__publish">{{ articles.7.date }}</div>
+                                </div>
+                            </a>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+                        {% if articles.8 %}
+                        <div class="third_type__article">
+                            <a href="" class="article__link">
+                                <div class="sub_one__last">
+                                    <div class="main__info">
+                                        <div class="type__category">
+                                            {{ articles.8.category }}
+                                        </div>
+                                        <h4 class="name__article"><b>{{ articles.8.name }}</b></h4>
+                                    </div>
+                                    <div class="date__publish">{{ articles.8.date }}</div>
+                                </div>
+                            </a>
+                            <div class="subs__last">
+                                {% if articles.9 %}
+                                <a href="" class="article__link">
+                                    <div class="sub_two__last">
+                                        <div class="other_info__article">
+                                            <div class="type__category">
+                                                {{ articles.9.category }}
+                                            </div>
+                                            <div class="date__publish">{{ articles.9.date }}</div>
+                                        </div>
+                                        <div class="main_info__article">
+                                            <h4 class="name__article"><b>{{ articles.9.name }}</b></h4>
+                                        </div>
+                                    </div>
+                                </a>
+                                {% endif %}
+                                {% if articles.10 %}
+                                <a href="" class="article__link">
+                                    <div class="sub_three__last">
+                                        <div class="other_info__article">
+                                            <div class="type__category">
+                                                {{ articles.10.category }}
+                                            </div>
+                                            <div class="date__publish">{{ articles.10.date }}</div>
+                                        </div>
+                                        <div class="main_info__article">
+                                            <h4 class="name__article"><b>{{ articles.10.name }}</b></h4>
+                                        </div>
+                                    </div>
+                                </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endif %}
+                        <nav class="pagination__block">
+                            <ul class="pagination__list">
+                                <li class="switch-btn {% if not articles.has_previous %}disabled{% endif %}">
+                                    <a href="
+                                            {% if articles.has_previous %}{% url 'paginator' articles.previous_page_number %}{% else %}{% endif %}">Предыдущая</a>
+                                </li>
+                                {% for page in articles.paginator.page_range %}
+                                    <li><a href="{% url 'paginator' page %}">{{ page }}</a></li>
+                                {% endfor %}
+                                <li class="switch-btn {% if not articles.has_next %} disabled {% endif %}"><a href="
+                                        {% if articles.has_next %}{% url 'paginator' articles.next_page_number %}{% else %}{% endif %}">Следующая</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="popular__news"></div>
-                    <form class="subscribe__form" action="">
-                        <input type="email" name="" id="">
-                        <button type="submit">
-                            <div class="subscribe">Подписаться</div>
-                            <img src="{% static 'image/arrow-right.svg' %}" alt="">
-                        </button>
-                    </form>
+                <div class="col-md-3 wrap">
+                    <div class="info_bar">
+                        <div class="popular__news">
+                            <h4 class="popular__article"><b>Популярные новости</b></h4>
+                            <div class="popular__unit">
+                                {% for popular_article in popular_articles %}
+                                <a href="" class="article__link">
+                                    <div class="popular__block {% if popular_articles.1 == popular_article %} medium {% endif %}">
+                                        <div class="popular__title">
+                                            {{ popular_article.name }}
+                                        </div>
+                                        <div class="date_for__popular_block">
+                                            {{ popular_article.date }}
+                                        </div>
+                                    </div>
+                                </a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="newsletter">
+                            <h2 class="sign__article"><b>Подписка на рассылку</b></h2>
+                            <form class="subscribe__form" action="" method="post">
+                                <input type="email" name="" id="" placeholder="Email">
+                                <button type="submit">
+                                    <div class="subscribe">Подписаться</div>
+                                    <img src="{% static 'image/arrow-right.svg' %}" alt="">
+                                </button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

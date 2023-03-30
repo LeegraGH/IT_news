@@ -1,44 +1,56 @@
 from django.shortcuts import render, redirect
 from articles.forms import AppealForm
+from django.core.paginator import Paginator
+from articles.models import Article
+from src import parse_news
+
 
 # Create your views here.
-def index(request):
-    context={
-        'title': "Главная | IT News"
+
+
+def index(request, page_number=1):
+    parse_news.parser()
+    articles = Article.objects.all().order_by('-id')
+    paginator = Paginator(articles, per_page=11)
+    articles_paginator = paginator.page(page_number)
+    context = {
+        'title': "Главная | IT News",
+        'articles': articles_paginator,
+        'popular_articles': articles[:3]
     }
-    return render(request,'articles/index.html',context=context)
+    return render(request, 'articles/index.html', context=context)
+
 
 def search(request):
-    context={
+    context = {
         'title': "Поиск | IT News"
     }
-    return render(request,'articles/search.html',context=context)
+    return render(request, 'articles/search.html', context=context)
+
 
 def article(request):
-    context={
+    context = {
         'title': "Статья | IT News"
     }
-    return render(request,'articles/article.html',context=context)
+    return render(request, 'articles/article.html', context=context)
+
 
 def category(request):
-    context={
+    context = {
         'title': "Категории | IT News"
     }
-    return render(request,'articles/category.html',context=context)
+    return render(request, 'articles/category.html', context=context)
+
 
 def contact(request):
-    error = ""
     if request.method == 'POST':
-        form=AppealForm(request.POST)
+        form = AppealForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('contact')
-        else:
-            error="Некорректные данные"
     form = AppealForm()
-    context={
+    context = {
         'title': "Контакты | IT News",
-        'form': form,
-        'error': error
+        'form': form
     }
-    return render(request,'articles/contact.html',context=context)
+    return render(request, 'articles/contact.html', context=context)

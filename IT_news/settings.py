@@ -22,8 +22,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-+bwf8kto53i)j)7+d=qwjakua^p5+g!-b)@vgc*0c7+2oi49-g'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
 # DEBUG = False
-DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1']
 
@@ -36,7 +36,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'phonenumber_field',
     'articles'
 ]
 
@@ -103,9 +102,13 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ru-ru'
 
-TIME_ZONE = 'UTC'
+DATETIME_FORMAT="%d.%m.%Y %H:%M"
+DATE_FORMAT="%d.%m.%Y"
+
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
+# USE_L10N = True
 
 USE_TZ = True
 
