@@ -93,3 +93,9 @@ footer{
     font-size: 14px;
     color: #2F2222;
 }
+
+@media screen and (max-width: 992px){
+    /* .header-center{
+        justify-content: center;
+    } */
+}

@@ -27,6 +27,9 @@ class ArticleCategory(models.Model):
 
 
 class Article(models.Model):
+    """
+    Класс, который представляет модель для хранения информации о статьях в БД
+    """
     class Meta:
         verbose_name = "Статья"
         verbose_name_plural = "Статьи"

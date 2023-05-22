@@ -1,0 +1,34 @@
+.other_info__article{
+    justify-content: left;
+    gap: 20px;
+}
+
+.other_info__article .type__category{
+    background: rgba(93, 113, 221, 0.05);
+}
+
+.pagination__list{
+    display: flex;
+    justify-content:space-between;
+    padding: 0;
+    gap: 20px;
+}
+
+.pagination__list li{
+    margin: 0;
+}
+
+.article_details{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.text__article{
+    font-size: 18px;
+}
+
+.photo__article img{
+    border-radius: 20px;
+    width: 100%;
+}

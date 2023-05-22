@@ -1,5 +1,5 @@
 {% extends 'articles/base.html' %}
-{% load static %}
+<!-- {% load static %} -->
 
 {% block css %}
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
@@ -12,7 +12,7 @@
                 <div class="col-md-9 wrap">
                     <div class="column__articles">
                         {% if articles.0 %}
-                        <a href="" class="article__link">
+                        <a href="{% url 'article' articles.0.id %}" class="article__link">
                             <div class="first_type__article">
                                 <div class="other_info__article">
                                     <div class="type__category">
@@ -29,7 +29,7 @@
                         {% endif %}
                         {% if articles.1 %}
                         <div class="second_type__article">
-                            <a href="" class="article__link one">
+                            <a href="{% url 'article' articles.1.id %}" class="article__link one">
                                 <div class="first__block">
                                     <div class="other_info__article">
                                         <div class="type__category">
@@ -44,7 +44,7 @@
                                 </div>
                             </a>
                             {% if articles.2 %}
-                            <a href="" class="article__link two">
+                            <a href="{% url 'article' articles.2.id %}" class="article__link two">
                                 <div class="second__block">
                                     <div class="main__info">
                                         <div class="type__category">
@@ -60,7 +60,7 @@
                         {% endif %}
                         {% if articles.3 %}
                         <div class="third_type__article">
-                            <a href="" class="article__link">
+                            <a href="{% url 'article' articles.3.id %}" class="article__link">
                                 <div class="sub_one__last">
                                     <div class="main__info">
                                         <div class="type__category">
@@ -73,7 +73,7 @@
                             </a>
                             <div class="subs__last">
                                 {% if articles.4 %}
-                                <a href="" class="article__link">
+                                <a href="{% url 'article' articles.4.id %}" class="article__link">
                                     <div class="sub_two__last">
                                         <div class="other_info__article">
                                             <div class="type__category">
@@ -88,7 +88,7 @@
                                 </a>
                                 {% endif %}
                                 {% if articles.5 %}
-                                <a href="" class="article__link">
+                                <a href="{% url 'article' articles.5.id %}" class="article__link">
                                     <div class="sub_three__last">
                                         <div class="other_info__article">
                                             <div class="type__category">
@@ -107,7 +107,7 @@
                         {% endif %}
                         {% if articles.6 %}
                         <div class="second_type__article">
-                            <a href="" class="article__link one">
+                            <a href="{% url 'article' articles.6.id %}" class="article__link one">
                                 <div class="first__block">
                                     <div class="other_info__article">
                                         <div class="type__category">
@@ -122,7 +122,7 @@
                                 </div>
                             </a>
                             {% if articles.7 %}
-                            <a href="" class="article__link two">
+                            <a href="{% url 'article' articles.7.id %}" class="article__link two">
                                 <div class="second__block">
                                     <div class="main__info">
                                         <div class="type__category">
@@ -138,8 +138,8 @@
                         {% endif %}
                         {% if articles.8 %}
                         <div class="third_type__article">
-                            <a href="" class="article__link">
-                                <div class="sub_one__last">
+                            <a href="{% url 'article' articles.8.id %}" class="article__link">
+                                <div class="sub_one__last other">
                                     <div class="main__info">
                                         <div class="type__category">
                                             {{ articles.8.category }}
@@ -151,7 +151,7 @@
                             </a>
                             <div class="subs__last">
                                 {% if articles.9 %}
-                                <a href="" class="article__link">
+                                <a href="{% url 'article' articles.9.id %}" class="article__link">
                                     <div class="sub_two__last">
                                         <div class="other_info__article">
                                             <div class="type__category">
@@ -166,7 +166,7 @@
                                 </a>
                                 {% endif %}
                                 {% if articles.10 %}
-                                <a href="" class="article__link">
+                                <a href="{% url 'article' articles.10.id %}" class="article__link">
                                     <div class="sub_three__last">
                                         <div class="other_info__article">
                                             <div class="type__category">
@@ -189,8 +189,12 @@
                                     <a href="
                                             {% if articles.has_previous %}{% url 'paginator' articles.previous_page_number %}{% else %}{% endif %}">Предыдущая</a>
                                 </li>
-                                {% for page in articles.paginator.page_range %}
-                                    <li><a href="{% url 'paginator' page %}">{{ page }}</a></li>
+                                {% for page in paginator_range %}
+                                    {% if page == articles.paginator.ELLIPSIS %}
+                                        <li>{{ page }}</li>
+                                    {% else %}
+                                    <li><a href="{% url 'paginator' page %}" class="num_page {% if page == articles.number %}current_page{% endif %}">{{ page }}</a></li>
+                                    {% endif %}
                                 {% endfor %}
                                 <li class="switch-btn {% if not articles.has_next %} disabled {% endif %}"><a href="
                                         {% if articles.has_next %}{% url 'paginator' articles.next_page_number %}{% else %}{% endif %}">Следующая</a>
@@ -205,7 +209,7 @@
                             <h4 class="popular__article"><b>Популярные новости</b></h4>
                             <div class="popular__unit">
                                 {% for popular_article in popular_articles %}
-                                <a href="" class="article__link">
+                                <a href="{% url 'article' popular_article.id %}" class="article__link">
                                     <div class="popular__block {% if popular_articles.1 == popular_article %} medium {% endif %}">
                                         <div class="popular__title">
                                             {{ popular_article.name }}

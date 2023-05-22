@@ -1,9 +1,78 @@
 {% extends 'articles/base.html' %}
+<!-- {% load static %} -->
 
 {% block css %}
-
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/article.css' %}">
 {% endblock %}
 
 {% block main %}
-    
+    <div class="preview"></div>
+    <section class="block__articles">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-md-7 wrap">
+                    <div class="article__info">
+                        <div class="article_details">
+                            <div class="other_info__article">
+                                <div class="type__category">{{ article.category }}</div>
+                                <div class="date__publish">{{ article.dateTime }}</div>
+                            </div>
+                            <h4 class="name__article"><b>{{ article.name }}</b></h4>
+                            <div class="main_info__article">
+                                <div class="photo__article"><img src="/static/image/article_photo.jpg" alt=""></div>
+                                <div class="text__article">
+                                    {% for text in all_text %}
+                                        <div>{{ text }}</div><br>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <nav class="pagination__block">
+                            <ul class="pagination__list">
+                                <li class="switch-btn {% if not articles.has_previous %}disabled{% endif %}">
+                                    <a href="
+                                            {% if articles.has_previous %}{% url 'paginator' articles.previous_page_number %}{% else %}{% endif %}">Предыдущая новость</a>
+                                </li>
+                                <li class="switch-btn {% if not articles.has_next %} disabled {% endif %}"><a href="
+                                        {% if articles.has_next %}{% url 'paginator' articles.next_page_number %}{% else %}{% endif %}">Следующая новость</a>
+                                </li>
+                            </ul>
+                        </nav> -->
+                    </div>
+                </div>
+                <div class="col-md-3 wrap">
+                    <div class="info_bar">
+                        <div class="popular__news">
+                            <h4 class="popular__article"><b>Популярные новости</b></h4>
+                            <div class="popular__unit">
+                                {% for popular_article in popular_articles %}
+                                <a href="{% url 'article' popular_article.id %}" class="article__link">
+                                    <div class="popular__block {% if popular_articles.1 == popular_article %} medium {% endif %}">
+                                        <div class="popular__title">
+                                            {{ popular_article.name }}
+                                        </div>
+                                        <div class="date_for__popular_block">
+                                            {{ popular_article.date }}
+                                        </div>
+                                    </div>
+                                </a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="newsletter">
+                            <h2 class="sign__article"><b>Подписка на рассылку</b></h2>
+                            <form class="subscribe__form" action="" method="post">
+                                <input type="email" name="" id="" placeholder="Email">
+                                <button type="submit">
+                                    <div class="subscribe">Подписаться</div>
+                                    <img src="{% static 'image/arrow-right.svg' %}" alt="">
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock %}
