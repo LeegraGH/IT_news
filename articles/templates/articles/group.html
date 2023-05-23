@@ -1,9 +1,50 @@
 {% extends 'articles/base.html' %}
+{% load static %}
 
 {% block css %}
-
+    <link rel="stylesheet" href="{% static 'css/group.css' %}">
 {% endblock %}
 
 {% block main %}
+    <section class="block__group">
+        <div class="container">
+            <div class="people__block">
 
+                <h1 class="group__title"><b>Мы - команда!</b></h1>
+
+                <div class="row justify-content-center">
+                    <div class="col-md-9 wrap group__area">
+                        <div class="person__block person__anya">
+                            <div class="person__show two">
+                                <h2 class="person__name">Аня Круглова</h2>
+                                <a href="" class="person__link">
+                                    <img src="{% static 'image/anya.jpg' %}" alt="anya">
+                                </a>
+                            </div>
+                            <div class="text__block one">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis architecto ab tempora, delectus harum doloremque temporibus perspiciatis neque fugiat laudantium voluptatibus, quam nostrum, assumenda distinctio magni quia. Aspernatur expedita error laboriosam aliquid veniam esse, corporis non est ipsum reiciendis voluptatum vel pariatur nemo porro temporibus quo officia modi inventore quos asperiores voluptatibus aliquam tempore, itaque odio. Laudantium alias nesciunt est beatae blanditiis vitae, ut sed, suscipit, exercitationem dolorem impedit atque minima odio repellendus laboriosam autem! Animi, saepe labore nostrum nobis dicta illum dolores ducimus atque maxime veniam quis distinctio repellat voluptate ea debitis assumenda. Cum, quod. Autem sint expedita porro.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-md-9 wrap group__area">
+                        <div class="person__block person__dasha">
+                            <div class="text__block one">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis architecto ab tempora, delectus harum doloremque temporibus perspiciatis neque fugiat laudantium voluptatibus, quam nostrum, assumenda distinctio magni quia. Aspernatur expedita error laboriosam aliquid veniam esse, corporis non est ipsum reiciendis voluptatum vel pariatur nemo porro temporibus quo officia modi inventore quos asperiores voluptatibus aliquam tempore, itaque odio. Laudantium alias nesciunt est beatae blanditiis vitae, ut sed, suscipit, exercitationem dolorem impedit atque minima odio repellendus laboriosam autem! Animi, saepe labore nostrum nobis dicta illum dolores ducimus atque maxime veniam quis distinctio repellat voluptate ea debitis assumenda. Cum, quod. Autem sint expedita porro.
+                            </div>
+                            <div class="person__show two">
+                                <h2 class="person__name">Даша Крендикова</h2>
+                                <a href="" class="person__link">
+                                    <img src="{% static 'image/dasha.jpg' %}" alt="anya">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
 {% endblock %}

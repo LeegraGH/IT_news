@@ -37,3 +37,9 @@
 .main_info__article{
     gap: 30px;
 }
+
+@media screen and (max-width: 490px) {
+    .link__switch > span{
+        display: none;
+    }
+}

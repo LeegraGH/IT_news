@@ -1,5 +1,5 @@
 {% extends 'articles/base.html' %}
-<!-- {% load static %} -->
+{% load static %}
 
 {% block css %}
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
@@ -31,9 +31,9 @@
                         <nav class="pagination__block">
                             <ul class="pagination__list">
                                 <li class="switch-btn {% if not previous %}disabled{% endif %}">
-                                    <a href="{% url 'article' article.id|add:-1 %}"><i class="fa-solid fa-angle-left arrow"></i> Предыдущая новость</a>
+                                    <a class="link__switch" href="{% url 'article' article.id|add:-1 %}"><i class="fa-solid fa-angle-left arrow"></i><span>Предыдущая новость</span></a>
                                 </li>
-                                <li class="switch-btn {% if not next %} disabled {% endif %}"><a href="{% url 'article' article.id|add:1 %}">Следующая новость <i class="fa-solid fa-angle-right arrow"></i></a>
+                                <li class="switch-btn {% if not next %} disabled {% endif %}"><a class="link__switch" href="{% url 'article' article.id|add:1 %}"><span>Следующая новость</span><i class="fa-solid fa-angle-right arrow"></i></a>
                                 </li>
                             </ul>
                         </nav>

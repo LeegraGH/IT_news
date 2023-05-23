@@ -37,6 +37,7 @@ def group(request):
     return render(request, 'articles/group.html', context=context)
 
 def article(request, article_number):
+    parse_news.parser()
     all_text = []
     image = ""
     articles = Article.objects.all().order_by('-id')
@@ -54,14 +55,16 @@ def article(request, article_number):
     try:
         page = requests.get("https://www.igromania.ru" + article_data.url)
         soup = BeautifulSoup(page.text, "html.parser")
-        info = soup.find("div", {"class": "universal_content"}).find_all(["div"], {"class": []})[:-1]
+        info = soup.find("div", {"class": "universal_content"}).find_all(["div","ol","ul"], {"class": []})[:-1]
         image = soup.find("div", {"class": "main_pic_container"}).find_next("img")["src"]
         for div_text in info:
-            if div_text.find_next("div", {"class": "sign_container"}) is not None:
+            if div_text.find("div", {"class": ["sign_container","grayblock_nom"]}) is not None:
                 continue
             text = div_text.text.strip()
-            if "Больше на Игромании" in text:
+            if div_text.find("div", {"class": "uninote console"}) is not None:
                 break
+            # if "Больше на Игромании" in text:
+            #     break
             if text != "":
                 all_text.append(text)
     except Exception as e:
