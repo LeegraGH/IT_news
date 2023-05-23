@@ -20,7 +20,7 @@
                             </div>
                             <h4 class="name__article"><b>{{ article.name }}</b></h4>
                             <div class="main_info__article">
-                                <div class="photo__article"><img src="/static/image/article_photo.jpg" alt=""></div>
+                                <div class="photo__article"><img src="{{ image }}" alt=""></div>
                                 <div class="text__article">
                                     {% for text in all_text %}
                                         <div>{{ text }}</div><br>
@@ -28,17 +28,15 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- <nav class="pagination__block">
+                        <nav class="pagination__block">
                             <ul class="pagination__list">
-                                <li class="switch-btn {% if not articles.has_previous %}disabled{% endif %}">
-                                    <a href="
-                                            {% if articles.has_previous %}{% url 'paginator' articles.previous_page_number %}{% else %}{% endif %}">Предыдущая новость</a>
+                                <li class="switch-btn {% if not previous %}disabled{% endif %}">
+                                    <a href="{% url 'article' article.id|add:-1 %}"><i class="fa-solid fa-angle-left arrow"></i> Предыдущая новость</a>
                                 </li>
-                                <li class="switch-btn {% if not articles.has_next %} disabled {% endif %}"><a href="
-                                        {% if articles.has_next %}{% url 'paginator' articles.next_page_number %}{% else %}{% endif %}">Следующая новость</a>
+                                <li class="switch-btn {% if not next %} disabled {% endif %}"><a href="{% url 'article' article.id|add:1 %}">Следующая новость <i class="fa-solid fa-angle-right arrow"></i></a>
                                 </li>
                             </ul>
-                        </nav> -->
+                        </nav>
                     </div>
                 </div>
                 <div class="col-md-3 wrap">
@@ -53,7 +51,7 @@
                                             {{ popular_article.name }}
                                         </div>
                                         <div class="date_for__popular_block">
-                                            {{ popular_article.date }}
+                                            {{ popular_article.dateTime }}
                                         </div>
                                     </div>
                                 </a>

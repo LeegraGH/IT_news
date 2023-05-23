@@ -6,6 +6,7 @@ from src import parse_news
 from bs4 import BeautifulSoup
 import requests
 
+
 # Create your views here.
 
 
@@ -17,7 +18,7 @@ def index(request, page_number=1):
     context = {
         'title': "Главная | IT News",
         'articles': articles_paginator,
-        'paginator_range': list(paginator.get_elided_page_range(page_number,on_each_side=2,on_ends=1)),
+        'paginator_range': list(paginator.get_elided_page_range(page_number, on_each_side=2, on_ends=1)),
         'popular_articles': articles[:3]
     }
     return render(request, 'articles/index.html', context=context)
@@ -29,29 +30,48 @@ def search(request):
     }
     return render(request, 'articles/search.html', context=context)
 
+def group(request):
+    context = {
+        'title': "О нас | IT News"
+    }
+    return render(request, 'articles/group.html', context=context)
 
-def article(request,article_number):
+def article(request, article_number):
     all_text = []
+    image = ""
+    articles = Article.objects.all().order_by('-id')
     context = {
         'title': "Статья | IT News",
-        'popular_articles': Article.objects.all().order_by('-id')[:3]
+        'popular_articles': articles[:3]
     }
     article_data = Article.objects.get(id=article_number)
+    previous_article = None
+    next_article = None
+    if Article.objects.filter(id=article_number - 1).exists():
+        previous_article = Article.objects.get(id=article_number - 1)
+    if Article.objects.filter(id=article_number + 1).exists():
+        next_article = Article.objects.get(id=article_number + 1)
     try:
-        page = requests.get("https://www.igromania.ru"+article_data.url)
-        soup=BeautifulSoup(page.text, "html.parser")
-        info=soup.find("div",{"class": "universal_content"}).find_all("div",{"class": ""})
+        page = requests.get("https://www.igromania.ru" + article_data.url)
+        soup = BeautifulSoup(page.text, "html.parser")
+        info = soup.find("div", {"class": "universal_content"}).find_all(["div"], {"class": []})[:-1]
+        image = soup.find("div", {"class": "main_pic_container"}).find_next("img")["src"]
         for div_text in info:
-            text=div_text.text.strip()
+            if div_text.find_next("div", {"class": "sign_container"}) is not None:
+                continue
+            text = div_text.text.strip()
             if "Больше на Игромании" in text:
                 break
-            if text!="":
+            if text != "":
                 all_text.append(text)
     except Exception as e:
         print(e)
     finally:
-        context["article"]=article_data
-        context["all_text"]=all_text
+        context["article"] = article_data
+        context["all_text"] = all_text
+        context["image"] = image
+        context["previous"] = previous_article
+        context["next"] = next_article
         return render(request, 'articles/article.html', context=context)
 
 

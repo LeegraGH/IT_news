@@ -10,7 +10,7 @@
     font-size: 28px;
     color: #2F2222;
     margin: 40px 0;
-    white-space: nowrap;
+    /* white-space: nowrap; */
 }
 
 .back-btn{
@@ -27,6 +27,7 @@
     padding: 10px 16px;
     background: rgba(93, 113, 221, 0.05);
     border-radius: 8px;
+    /* width: 100%; */
 }
 
 .back-text{
@@ -34,5 +35,23 @@
     font-weight: 400;
     font-size: 18px;
     color: #5D71DD;
-    white-space: nowrap;
+    /* white-space: nowrap; */
+}
+
+.format__wrong{
+    width: 80%;
+}
+
+@media screen and (max-width: 768px) {
+    .avatar{
+        width: 80%;
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 490px) {
+
+    .wrong{
+        font-size: 22px;
+    }
 }

@@ -10,10 +10,7 @@ def parser():
         soup = BeautifulSoup(page.text, "html.parser")
         articles = soup.find_all("div", {"class": "aubl_item"})
 
-        # articles=articles.reverse()
-
         for article in articles[::-1]:
-            # date = article.find_next("div", {"class": "aubli_date"}).text
             article_data = {
                 "url": article.find_next("a", {"class": "aubli_name"}).get("href"),
                 "name": article.find_next("a", {"class": "aubli_name"}).text,

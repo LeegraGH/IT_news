@@ -61,7 +61,7 @@
                         {% if articles.3 %}
                         <div class="third_type__article">
                             <a href="{% url 'article' articles.3.id %}" class="article__link">
-                                <div class="sub_one__last">
+                                <div class="sub_one__last hover__type">
                                     <div class="main__info">
                                         <div class="type__category">
                                             {{ articles.3.category }}
@@ -187,7 +187,7 @@
                             <ul class="pagination__list">
                                 <li class="switch-btn {% if not articles.has_previous %}disabled{% endif %}">
                                     <a href="
-                                            {% if articles.has_previous %}{% url 'paginator' articles.previous_page_number %}{% else %}{% endif %}">Предыдущая</a>
+                                            {% if articles.has_previous %}{% url 'paginator' articles.previous_page_number %}{% else %}{% endif %}"><i class="fa-solid fa-angle-left arrow"></i> Предыдущая</a>
                                 </li>
                                 {% for page in paginator_range %}
                                     {% if page == articles.paginator.ELLIPSIS %}
@@ -197,7 +197,7 @@
                                     {% endif %}
                                 {% endfor %}
                                 <li class="switch-btn {% if not articles.has_next %} disabled {% endif %}"><a href="
-                                        {% if articles.has_next %}{% url 'paginator' articles.next_page_number %}{% else %}{% endif %}">Следующая</a>
+                                        {% if articles.has_next %}{% url 'paginator' articles.next_page_number %}{% else %}{% endif %}">Следующая <i class="fa-solid fa-angle-right arrow"></i></a>
                                 </li>
                             </ul>
                         </nav>
@@ -215,7 +215,7 @@
                                             {{ popular_article.name }}
                                         </div>
                                         <div class="date_for__popular_block">
-                                            {{ popular_article.date }}
+                                            {{ popular_article.dateTime }}
                                         </div>
                                     </div>
                                 </a>
