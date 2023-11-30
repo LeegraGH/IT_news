@@ -18,13 +18,11 @@
                                 <div class="type__category">{{ article.category }}</div>
                                 <div class="date__publish">{{ article.dateTime }}</div>
                             </div>
-                            <h4 class="name__article"><b>{{ article.name }}</b></h4>
+                            <h4 class="name__article"><b>{{ article.title }}</b></h4>
                             <div class="main_info__article">
-                                <div class="photo__article"><img src="{{ image }}" alt=""></div>
+                                <div class="photo__article"><img src="{{ article.image }}" alt=""></div>
                                 <div class="text__article">
-                                    {% for text in all_text %}
-                                        <div>{{ text }}</div><br>
-                                    {% endfor %}
+                                    {{ article.information }}
                                 </div>
                             </div>
                         </div>
@@ -48,7 +46,7 @@
                                 <a href="{% url 'article' popular_article.id %}" class="article__link">
                                     <div class="popular__block {% if popular_articles.1 == popular_article %} medium {% endif %}">
                                         <div class="popular__title">
-                                            {{ popular_article.name }}
+                                            {{ popular_article.title }}
                                         </div>
                                         <div class="date_for__popular_block">
                                             {{ popular_article.dateTime }}
@@ -60,8 +58,10 @@
                         </div>
                         <div class="newsletter">
                             <h2 class="sign__article"><b>Подписка на рассылку</b></h2>
-                            <form class="subscribe__form" action="" method="post">
-                                <input type="email" name="" id="" placeholder="Email">
+                            <form class="subscribe__form" action="{% url 'article' article.id %}" method="post">
+                                {% csrf_token %}
+                                {{ form.email }}
+{#                                <input type="email" name="" id="" placeholder="Email">#}
                                 <button type="submit">
                                     <div class="subscribe">Подписаться</div>
                                     <img src="{% static 'image/arrow-right.svg' %}" alt="">

@@ -1,0 +1,7 @@
+django==4.2
+beautifulsoup4~=4.12.2
+aiohttp~=3.9.1
+redis
+requests==2.31.0
+celery~=5.3.6
+django-environ

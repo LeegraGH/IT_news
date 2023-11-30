@@ -1,7 +1,8 @@
-from bs4 import BeautifulSoup
 import requests
-from articles.models import Article, ArticleCategory
+from bs4 import BeautifulSoup
 from django.core.exceptions import ObjectDoesNotExist
+
+from articles.models import Article, ArticleCategory
 
 
 def parser():
