@@ -1,0 +1,59 @@
+{% extends 'articles/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-12 align-self-center">
+                <div class="info-content">
+                    <h2 class="article"><b>Профиль</b></h2>
+                    <div class="avatar">
+                        <img class="profile-image"
+                             src="{% if user.image %} {{ user.image.url }} {% else %} {% static 'image/avatar.jpg' %} {% endif %}"
+                             alt="">
+                    </div>
+                    <form class="profile-content" action="{% url 'profile' %}" method="post"
+                          enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="profile-avatar">
+                            <label for="{{ form.image.id_for_label }}">
+                                <span class="label-text">Выберите изображение в качестве аватарки</span>
+                                <span class="input-file-btn">
+                                    {{ form.image }}
+                                    Выберите файл</span>
+                            </label>
+                        </div>
+                        <div class="profile-info">
+                            <div>
+                                <label for="{{ form.first_name.id_for_label }}">Имя</label>
+                                {{ form.first_name }}
+                            </div>
+                            <div>
+                                <label for="{{ form.last_name.id_for_label }}">Фамилия</label>
+                                {{ form.last_name }}
+                            </div>
+                        </div>
+                        <div class="profile-info read-info">
+                            <div>
+                                <label for="{{ form.username.id_for_label }}">Логин</label>
+                                {{ form.username }}
+                            </div>
+                            <div>
+                                <label for="{{ form.email.id_for_label }}">Адрес электронной почты</label>
+                                {{ form.email }}
+                            </div>
+                        </div>
+                        <button type="submit">
+                            <div class="send">Сохранить</div>
+                            <img src="{% static 'image/arrow-right.svg' %}" alt="">
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

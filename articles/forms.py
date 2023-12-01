@@ -1,4 +1,5 @@
 from django import forms
+
 from articles.models import Appeal, Mailing
 
 
@@ -24,6 +25,7 @@ class MailForm(forms.ModelForm):
     email = forms.CharField(widget=forms.EmailInput(attrs={
         'placeholder': 'Email'
     }))
+
     class Meta:
         model = Mailing
         fields = ["email"]

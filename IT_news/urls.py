@@ -15,8 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.static import static
+from django.conf import settings
 
 from articles.views import index, search, contact, group
+from users.views import login, registration, profile, logout, favourite
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,7 +27,12 @@ urlpatterns = [
     path('search/', search, name='search'),
     path('contact/', contact, name='contact'),
     path('group/', group, name='group'),
-    path('articles/', include('articles.urls')),
-]
+    path('articles/', include('articles.urls', namespace="articles")),
+    path('login/', login, name='login'),
+    path('registration/', registration, name='registration'),
+    path('profile/', profile, name='profile'),
+    path('logout/', logout, name='logout'),
+    path('favourite/', favourite, name='favourite'),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404 = "IT_news.views.page_not_found_view"

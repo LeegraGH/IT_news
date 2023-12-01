@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from articles.forms import AppealForm, MailForm
 from articles.models import Article
 
+from parser.src.parsers.habr_parser import habr_parse
 
 # Create your views here.
 
@@ -17,6 +18,8 @@ def index(request, page_number=1):
     form = MailForm()
 
     # mail_parse()
+    # habr_parse()
+
 
     articles = Article.objects.all().order_by('-id')
     paginator = Paginator(articles, per_page=11)

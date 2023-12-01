@@ -39,18 +39,13 @@ class ArticleCategory(models.Model):
 
 
 class Article(models.Model):
-    """
-    Класс, который представляет модель для хранения информации о статьях в БД
-    """
-
     class Meta:
         verbose_name = "Статья"
         verbose_name_plural = "Статьи"
 
     title = models.CharField(max_length=150)
-    description = models.TextField()
     information = models.TextField()
-    image = models.ImageField(upload_to="articles_images", null=True, blank=True)
+    image = models.ImageField(null=True, blank=True)
     dateTime = models.DateTimeField(auto_now_add=True)
     category = models.ForeignKey(to=ArticleCategory, on_delete=models.PROTECT)
 

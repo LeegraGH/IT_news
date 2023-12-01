@@ -15,12 +15,21 @@
                     <div class="article__info">
                         <div class="article_details">
                             <div class="other_info__article">
-                                <div class="type__category">{{ article.category }}</div>
-                                <div class="date__publish">{{ article.dateTime }}</div>
+                                <div>
+                                    <div class="type__category">{{ article.category }}</div>
+                                    <div class="date__publish">{{ article.dateTime }}</div>
+                                </div>
+                                <form action=""></form>
+                                <div class="favourite-toggle">
+                                    <i class="fa-regular fa-star"></i>
+{#                                    <i class="fa-solid fa-star"></i>#}
+                                </div>
                             </div>
                             <h4 class="name__article"><b>{{ article.title }}</b></h4>
                             <div class="main_info__article">
-                                <div class="photo__article"><img src="{{ article.image }}" alt=""></div>
+                                {% if article.image %}
+                                    <div class="photo__article"><img src="{{ article.image }}" alt=""></div>
+                                {% endif %}
                                 <div class="text__article">
                                     {{ article.information }}
                                 </div>
@@ -29,9 +38,12 @@
                         <nav class="pagination__block">
                             <ul class="pagination__list">
                                 <li class="switch-btn {% if not previous %}disabled{% endif %}">
-                                    <a class="link__switch" href="{% url 'article' article.id|add:-1 %}"><i class="fa-solid fa-angle-left arrow"></i><span>Предыдущая новость</span></a>
+                                    <a class="link__switch" href="{% url 'articles:article' article.id|add:-1 %}"><i
+                                            class="fa-solid fa-angle-left arrow"></i><span>Предыдущая новость</span></a>
                                 </li>
-                                <li class="switch-btn {% if not next %} disabled {% endif %}"><a class="link__switch" href="{% url 'article' article.id|add:1 %}"><span>Следующая новость</span><i class="fa-solid fa-angle-right arrow"></i></a>
+                                <li class="switch-btn {% if not next %} disabled {% endif %}"><a class="link__switch"
+                                                                                                 href="{% url 'articles:article' article.id|add:1 %}"><span>Следующая новость</span><i
+                                        class="fa-solid fa-angle-right arrow"></i></a>
                                 </li>
                             </ul>
                         </nav>
@@ -43,25 +55,26 @@
                             <h4 class="popular__article"><b>Популярные новости</b></h4>
                             <div class="popular__unit">
                                 {% for popular_article in popular_articles %}
-                                <a href="{% url 'article' popular_article.id %}" class="article__link">
-                                    <div class="popular__block {% if popular_articles.1 == popular_article %} medium {% endif %}">
-                                        <div class="popular__title">
-                                            {{ popular_article.title }}
+                                    <a href="{% url 'articles:article' popular_article.id %}" class="article__link">
+                                        <div class="popular__block {% if popular_articles.1 == popular_article %} medium {% endif %}">
+                                            <div class="popular__title">
+                                                {{ popular_article.title }}
+                                            </div>
+                                            <div class="date_for__popular_block">
+                                                {{ popular_article.dateTime }}
+                                            </div>
                                         </div>
-                                        <div class="date_for__popular_block">
-                                            {{ popular_article.dateTime }}
-                                        </div>
-                                    </div>
-                                </a>
+                                    </a>
                                 {% endfor %}
                             </div>
                         </div>
                         <div class="newsletter">
                             <h2 class="sign__article"><b>Подписка на рассылку</b></h2>
-                            <form class="subscribe__form" action="{% url 'article' article.id %}" method="post">
+                            <form class="subscribe__form" action="{% url 'articles:article' article.id %}"
+                                  method="post">
                                 {% csrf_token %}
                                 {{ form.email }}
-{#                                <input type="email" name="" id="" placeholder="Email">#}
+                                {#                                <input type="email" name="" id="" placeholder="Email">#}
                                 <button type="submit">
                                     <div class="subscribe">Подписаться</div>
                                     <img src="{% static 'image/arrow-right.svg' %}" alt="">
@@ -73,4 +86,8 @@
             </div>
         </div>
     </section>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'js/favourite.js' %}"></script>
 {% endblock %}

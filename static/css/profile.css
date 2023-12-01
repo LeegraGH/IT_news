@@ -1,0 +1,150 @@
+.info-content {
+    max-width: 800px;
+    margin: 100px auto;
+    background: #FFFFFF;
+    box-shadow: 4px 8px 40px rgba(8, 24, 111, 0.2);
+    border-radius: 20px;
+    padding: 0px 60px 60px 60px;
+}
+
+.article {
+    font-size: 30px;
+    color: #2F2222;
+    padding-top: 40px;
+    margin-bottom: 20px;
+}
+
+.profile-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.avatar {
+    width: 250px;
+    height: 250px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.profile-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}
+
+.info-content button {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: none;
+    background: #5D71DD;
+    border-radius: 20px;
+    height: 49px;
+}
+
+.info-content button {
+    font-size: 18px;
+    color: #FFFFFF;
+}
+
+.info-content input {
+    padding: 13px 32px 13px 30px;
+    background: #F5F5F5;
+    border: 2px solid #F5F5F5;
+    border-radius: 20px;
+}
+
+.info-content input:focus {
+    outline: none;
+    border: 2px solid #5D71DD;
+}
+
+.profile-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.profile-info div {
+    flex-grow: 1;
+}
+
+.profile-info div label, .profile-avatar label {
+    display: block;
+    width: 100%;
+}
+
+.profile-info div input {
+    display: inline-block;
+    width: 100%;
+}
+
+.profile-avatar {
+    display: inline-block;
+    width: 100%;
+}
+
+.profile-avatar .label-text {
+    margin-right: 20px;
+}
+
+.input-file-btn {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+    font-size: 16px;
+    width: 100%;
+    vertical-align: middle;
+    color: rgb(255 255 255);
+    text-align: center;
+    border-radius: 20px;
+    background-color: #5D71DD;
+    line-height: 22px;
+    padding: 13px 0;
+    box-sizing: border-box;
+    border: 2px solid #5D71DD;
+    margin: 0;
+    transition: background-color 0.2s;
+}
+
+.profile-field-image {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    display: block;
+    width: 0;
+    height: 0;
+}
+
+.read-info input:focus {
+    border: 2px solid #F5F5F5;
+}
+
+
+@media screen and (max-width: 490px) {
+    .profile {
+        padding: 0px 30px 50px 30px;
+    }
+
+    .avatar {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .info-content {
+        padding: 0px 30px 60px 30px;
+    }
+
+    .avatar {
+        width: 150px;
+        height: 150px;
+    }
+}

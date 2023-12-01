@@ -1,0 +1,16 @@
+[
+{
+  "model": "articles.articlecategory",
+  "pk": 1,
+  "fields": {
+    "name": "hi-tech Mail.ru"
+  }
+},
+{
+  "model": "articles.articlecategory",
+  "pk": 2,
+  "fields": {
+    "name": "Habr"
+  }
+}
+]

@@ -1,0 +1,27 @@
+.modal-message {
+    max-width: 500px;
+    margin: 100px auto 0px auto;
+    background: #FFFFFF;
+    box-shadow: 4px 8px 40px rgba(8, 24, 111, 0.2);
+    border-radius: 20px;
+    padding: 30px;
+    font-size: 18px;
+}
+
+.modal-success {
+    color: green;
+}
+
+.modal-error {
+    color: red;
+}
+
+.modal-btn{
+    width: 100%;
+     text-align: right;
+}
+
+.modal-btn i{
+    display: inline-block;
+    cursor: pointer;
+}

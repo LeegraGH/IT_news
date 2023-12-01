@@ -4,7 +4,7 @@ import requests
 from bs4 import BeautifulSoup
 
 
-# from parser.src.services.add_article import add_article
+from parser.src.services.add_article import add_article
 
 
 def habr_parse():

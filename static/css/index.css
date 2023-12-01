@@ -411,11 +411,11 @@
     }
 
     .subscribe__form input{
-        width: 90%;
+        width: 100%;
     }
 
     .subscribe__form button{
-        width: 60%;
+        width: 100%;
     }
 }
 

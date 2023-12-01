@@ -1,10 +1,26 @@
+.article_details{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
 .other_info__article{
-    justify-content: left;
-    gap: 20px;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+
+.favourite-toggle{
+    cursor: pointer;
 }
 
 .other_info__article .type__category{
+    display: inline-block;
     background: rgba(93, 113, 221, 0.05);
+}
+
+.other_info__article .date__publish{
+    display: inline-block;
 }
 
 .pagination__list{
@@ -16,12 +32,6 @@
 
 .pagination__list li{
     margin: 0;
-}
-
-.article_details{
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
 }
 
 .text__article{

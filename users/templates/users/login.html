@@ -1,0 +1,52 @@
+{% extends 'articles/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/sign.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-8 align-self-center">
+                {% if messages or form.non_field_errors %}
+                    <div class="modal-message">
+                        <div class="modal-btn">
+                            <i class="fa-solid fa-xmark"></i>
+                        </div>
+                        {% if messages %}
+                            <div class="modal-success">
+                                {% for message in messages %}
+                                    {{ message }}
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            <div class="modal-error">
+                                {{ form.non_field_errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+                <div class="sign">
+                    <h2 class="article"><b>Вход</b></h2>
+                    <h3>Еще нет аккаунта? <a href={% url 'registration' %}>Зарегистрироваться!</a></h3>
+                    <h3>Забыли пароль? <a href={% url 'registration' %}>Восстановить.</a></h3>
+                    <form class="form" action="{% url 'login' %}" method="post">
+                        {% csrf_token %}
+                        {{ form.username }}
+                        {{ form.password }}
+                        <button type="submit">
+                            <div class="send">Войти</div>
+                            <img src="{% static 'image/arrow-right.svg' %}" alt="">
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'js/modal.js' %}"></script>
+{% endblock %}
