@@ -2,9 +2,8 @@ from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
 
 from articles.forms import AppealForm, MailForm
-from articles.models import Article
+from articles.models import Article, FavouriteArticle
 
-from parser.src.parsers.habr_parser import habr_parse
 
 # Create your views here.
 
@@ -19,7 +18,6 @@ def index(request, page_number=1):
 
     # mail_parse()
     # habr_parse()
-
 
     articles = Article.objects.all().order_by('-id')
     paginator = Paginator(articles, per_page=11)
@@ -73,6 +71,7 @@ def article(request, article_number):
     context["article"] = article_data
     context["previous"] = previous_article
     context["next"] = next_article
+    context["favourite"] = FavouriteArticle.objects.filter(article=article_data)
 
     return render(request, 'articles/article.html', context=context)
 
@@ -96,3 +95,26 @@ def contact(request):
         'form': form
     }
     return render(request, 'articles/contact.html', context=context)
+
+
+def favourite(request):
+    favourites = FavouriteArticle.objects.filter(user=request.user).order_by('-id')
+    context = {
+        "favourites": favourites
+    }
+    return render(request, 'articles/favourite.html', context=context)
+
+
+def favourite_add(request, article_number):
+    article = Article.objects.get(id=article_number)
+    favourite = FavouriteArticle.objects.filter(article=article, user=request.user)
+    if not favourite.exists():
+        favourite = FavouriteArticle(article=article, user=request.user)
+        favourite.save()
+
+    return redirect(request.META['HTTP_REFERER'])
+
+
+def favourite_remove(request, favourite_number):
+    FavouriteArticle.objects.filter(id=favourite_number).delete()
+    return redirect(request.META['HTTP_REFERER'])

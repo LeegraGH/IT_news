@@ -10,6 +10,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-9 wrap">
+{#                    <div class="sort_block">#}
+{#                        <label for="category-list">Сортировать</label>#}
+{#                        <select name="category-list" id="category-list">#}
+{#                            <option value="">Один</option>#}
+{#                            <option value="">Два</option>#}
+{#                            <option value="">Три</option>#}
+{#                        </select>#}
+{#                    </div>#}
                     <div class="column__articles">
                         {% if articles.0 %}
                         <a href="{% url 'articles:article' articles.0.id %}" class="article__link">

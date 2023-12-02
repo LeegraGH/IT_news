@@ -19,10 +19,16 @@
                                     <div class="type__category">{{ article.category }}</div>
                                     <div class="date__publish">{{ article.dateTime }}</div>
                                 </div>
-                                <form action=""></form>
                                 <div class="favourite-toggle">
-                                    <i class="fa-regular fa-star"></i>
-{#                                    <i class="fa-solid fa-star"></i>#}
+                                    {% if favourite %}
+                                        <a href="{% url 'articles:favourite_remove' favourite.0.id %}">
+                                            <i class="fa-solid fa-star"></i>
+                                        </a>
+                                    {% else %}
+                                        <a href="{% url 'articles:favourite_add' article.id %}">
+                                            <i class="fa-regular fa-star"></i>
+                                        </a>
+                                    {% endif %}
                                 </div>
                             </div>
                             <h4 class="name__article"><b>{{ article.title }}</b></h4>
@@ -86,8 +92,4 @@
             </div>
         </div>
     </section>
-{% endblock %}
-
-{% block script %}
-    <script src="{% static 'js/favourite.js' %}"></script>
 {% endblock %}

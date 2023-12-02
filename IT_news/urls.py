@@ -19,7 +19,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 from articles.views import index, search, contact, group
-from users.views import login, registration, profile, logout, favourite
+from users.views import login, registration, profile, logout
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -32,7 +32,6 @@ urlpatterns = [
     path('registration/', registration, name='registration'),
     path('profile/', profile, name='profile'),
     path('logout/', logout, name='logout'),
-    path('favourite/', favourite, name='favourite'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404 = "IT_news.views.page_not_found_view"

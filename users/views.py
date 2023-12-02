@@ -61,7 +61,3 @@ def profile(request):
 def logout(request):
     auth.logout(request)
     return redirect('index')
-
-
-def favourite(request):
-    return render(request, 'users/favourite.html')
