@@ -16,8 +16,8 @@
                             {% for favourite in favourites %}
                                 <div class="favourite-item">
                                     <div class="favourite-item-wrapper">
-                                        <a href="{% url 'articles:article' favourite.article.id %}">
-                                            <div class="favourite-info">
+                                        <a class="favourite-info" href="{% url 'articles:article' favourite.article.id %}">
+                                            <div>
                                                 <div class="article">{{ favourite.article.title }}</div>
                                                 <div class="date">{{ favourite.article.dateTime }}</div>
                                             </div>

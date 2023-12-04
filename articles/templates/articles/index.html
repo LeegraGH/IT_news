@@ -10,202 +10,213 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-9 wrap">
-{#                    <div class="sort_block">#}
-{#                        <label for="category-list">Сортировать</label>#}
-{#                        <select name="category-list" id="category-list">#}
-{#                            <option value="">Один</option>#}
-{#                            <option value="">Два</option>#}
-{#                            <option value="">Три</option>#}
-{#                        </select>#}
-{#                    </div>#}
+                    <div class="sort_block">
+                        <label for="category-list">Сортировать по:</label>
+                        <a href="{% url 'index' %}">Всё</a>
+                        {% for category in categories %}
+                            <a href="{% url 'articles:category' category.id %}">
+                                {{ category.name }}
+                            </a>
+                        {% endfor %}
+
+                    </div>
                     <div class="column__articles">
                         {% if articles.0 %}
-                        <a href="{% url 'articles:article' articles.0.id %}" class="article__link">
-                            <div class="first_type__article">
-                                <div class="other_info__article">
-                                    <div class="type__category">
-                                        {{ articles.0.category }}
+                            <a href="{% url 'articles:article' articles.0.id %}" class="article__link">
+                                <div class="first_type__article">
+                                    <div class="other_info__article">
+                                        <div class="type__category">
+                                            {{ articles.0.category }}
+                                        </div>
+                                        <div class="date__publish">{{ articles.0.dateTime }}</div>
                                     </div>
-                                    <div class="date__publish">{{ articles.0.dateTime }}</div>
+                                    <div class="main_info__article">
+                                        <h4 class="name__article"><b>{{ articles.0.title }}</b></h4>
+                                        <div class="descr__article">{{ articles.0.description }}</div>
+                                    </div>
                                 </div>
-                                <div class="main_info__article">
-                                    <h4 class="name__article"><b>{{ articles.0.title }}</b></h4>
-                                    <div class="descr__article">{{ articles.0.description }}</div>
-                                </div>
-                            </div>
-                        </a>
+                            </a>
                         {% endif %}
                         {% if articles.1 %}
-                        <div class="second_type__article">
-                            <a href="{% url 'articles:article' articles.1.id %}" class="article__link one">
-                                <div class="first__block">
-                                    <div class="other_info__article">
-                                        <div class="type__category">
-                                            {{ articles.1.category }}
+                            <div class="second_type__article">
+                                <a href="{% url 'articles:article' articles.1.id %}" class="article__link one">
+                                    <div class="first__block">
+                                        <div class="other_info__article">
+                                            <div class="type__category">
+                                                {{ articles.1.category }}
+                                            </div>
+                                            <div class="date__publish">{{ articles.1.dateTime }}</div>
                                         </div>
-                                        <div class="date__publish">{{ articles.1.dateTime }}</div>
-                                    </div>
-                                    <div class="main_info__article">
-                                        <h4 class="name__article"><b>{{ articles.1.title }}</b></h4>
-                                        <div class="descr__article">{{ articles.1.description }}</div>
-                                    </div>
-                                </div>
-                            </a>
-                            {% if articles.2 %}
-                            <a href="{% url 'articles:article' articles.2.id %}" class="article__link two">
-                                <div class="second__block">
-                                    <div class="main__info">
-                                        <div class="type__category">
-                                            {{ articles.2.category }}
+                                        <div class="main_info__article">
+                                            <h4 class="name__article"><b>{{ articles.1.title }}</b></h4>
+                                            <div class="descr__article">{{ articles.1.description }}</div>
                                         </div>
-                                        <h4 class="name__article"><b>{{ articles.2.title }}</b></h4>
                                     </div>
-                                    <div class="date__publish">{{ articles.2.dateTime }}</div>
-                                </div>
-                            </a>
-                            {% endif %}
-                        </div>
+                                </a>
+                                {% if articles.2 %}
+                                    <a href="{% url 'articles:article' articles.2.id %}" class="article__link two">
+                                        <div class="second__block">
+                                            <div class="main__info">
+                                                <div class="type__category">
+                                                    {{ articles.2.category }}
+                                                </div>
+                                                <h4 class="name__article"><b>{{ articles.2.title }}</b></h4>
+                                            </div>
+                                            <div class="date__publish">{{ articles.2.dateTime }}</div>
+                                        </div>
+                                    </a>
+                                {% endif %}
+                            </div>
                         {% endif %}
                         {% if articles.3 %}
-                        <div class="third_type__article">
-                            <a href="{% url 'articles:article' articles.3.id %}" class="article__link">
-                                <div class="sub_one__last hover__type">
-                                    <div class="main__info">
-                                        <div class="type__category">
-                                            {{ articles.3.category }}
+                            <div class="third_type__article">
+                                <a href="{% url 'articles:article' articles.3.id %}" class="article__link">
+                                    <div class="sub_one__last hover__type">
+                                        <div class="main__info">
+                                            <div class="type__category">
+                                                {{ articles.3.category }}
+                                            </div>
+                                            <h4 class="name__article"><b>{{ articles.3.title }}</b></h4>
                                         </div>
-                                        <h4 class="name__article"><b>{{ articles.3.title }}</b></h4>
+                                        <div class="date__publish">{{ articles.3.dateTime }}</div>
                                     </div>
-                                    <div class="date__publish">{{ articles.3.dateTime }}</div>
+                                </a>
+                                <div class="subs__last">
+                                    {% if articles.4 %}
+                                        <a href="{% url 'articles:article' articles.4.id %}" class="article__link">
+                                            <div class="sub_two__last">
+                                                <div class="other_info__article">
+                                                    <div class="type__category">
+                                                        {{ articles.4.category }}
+                                                    </div>
+                                                    <div class="date__publish">{{ articles.4.dateTime }}</div>
+                                                </div>
+                                                <div class="main_info__article">
+                                                    <h4 class="name__article"><b>{{ articles.4.title }}</b></h4>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    {% endif %}
+                                    {% if articles.5 %}
+                                        <a href="{% url 'articles:article' articles.5.id %}" class="article__link">
+                                            <div class="sub_three__last">
+                                                <div class="other_info__article">
+                                                    <div class="type__category">
+                                                        {{ articles.5.category }}
+                                                    </div>
+                                                    <div class="date__publish">{{ articles.5.dateTime }}</div>
+                                                </div>
+                                                <div class="main_info__article">
+                                                    <h4 class="name__article"><b>{{ articles.5.title }}</b></h4>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    {% endif %}
                                 </div>
-                            </a>
-                            <div class="subs__last">
-                                {% if articles.4 %}
-                                <a href="{% url 'articles:article' articles.4.id %}" class="article__link">
-                                    <div class="sub_two__last">
-                                        <div class="other_info__article">
-                                            <div class="type__category">
-                                                {{ articles.4.category }}
-                                            </div>
-                                            <div class="date__publish">{{ articles.4.dateTime }}</div>
-                                        </div>
-                                        <div class="main_info__article">
-                                            <h4 class="name__article"><b>{{ articles.4.title }}</b></h4>
-                                        </div>
-                                    </div>
-                                </a>
-                                {% endif %}
-                                {% if articles.5 %}
-                                <a href="{% url 'articles:article' articles.5.id %}" class="article__link">
-                                    <div class="sub_three__last">
-                                        <div class="other_info__article">
-                                            <div class="type__category">
-                                                {{ articles.5.category }}
-                                            </div>
-                                            <div class="date__publish">{{ articles.5.dateTime }}</div>
-                                        </div>
-                                        <div class="main_info__article">
-                                            <h4 class="name__article"><b>{{ articles.5.title }}</b></h4>
-                                        </div>
-                                    </div>
-                                </a>
-                                {% endif %}
                             </div>
-                        </div>
                         {% endif %}
                         {% if articles.6 %}
-                        <div class="second_type__article">
-                            <a href="{% url 'articles:article' articles.6.id %}" class="article__link one">
-                                <div class="first__block">
-                                    <div class="other_info__article">
-                                        <div class="type__category">
-                                            {{ articles.6.category }}
-                                        </div>
-                                        <div class="date__publish">{{ articles.6.dateTime }}</div>
-                                    </div>
-                                    <div class="main_info__article">
-                                        <h4 class="name__article"><b>{{ articles.6.title }}</b></h4>
-                                        <div class="descr__article">{{ articles.6.description }}</div>
-                                    </div>
-                                </div>
-                            </a>
-                            {% if articles.7 %}
-                            <a href="{% url 'articles:article' articles.7.id %}" class="article__link two">
-                                <div class="second__block">
-                                    <div class="main__info">
-                                        <div class="type__category">
-                                            {{ articles.7.category }}
-                                        </div>
-                                        <h4 class="name__article"><b>{{ articles.7.title }}</b></h4>
-                                    </div>
-                                    <div class="date__publish">{{ articles.7.dateTime }}</div>
-                                </div>
-                            </a>
-                            {% endif %}
-                        </div>
-                        {% endif %}
-                        {% if articles.8 %}
-                        <div class="third_type__article">
-                            <a href="{% url 'articles:article' articles.8.id %}" class="article__link">
-                                <div class="sub_one__last other">
-                                    <div class="main__info">
-                                        <div class="type__category">
-                                            {{ articles.8.category }}
-                                        </div>
-                                        <h4 class="name__article"><b>{{ articles.8.title }}</b></h4>
-                                    </div>
-                                    <div class="date__publish">{{ articles.8.dateTime }}</div>
-                                </div>
-                            </a>
-                            <div class="subs__last">
-                                {% if articles.9 %}
-                                <a href="{% url 'articles:article' articles.9.id %}" class="article__link">
-                                    <div class="sub_two__last">
+                            <div class="second_type__article">
+                                <a href="{% url 'articles:article' articles.6.id %}" class="article__link one">
+                                    <div class="first__block">
                                         <div class="other_info__article">
                                             <div class="type__category">
-                                                {{ articles.9.category }}
+                                                {{ articles.6.category }}
                                             </div>
-                                            <div class="date__publish">{{ articles.9.dateTime }}</div>
+                                            <div class="date__publish">{{ articles.6.dateTime }}</div>
                                         </div>
                                         <div class="main_info__article">
-                                            <h4 class="name__article"><b>{{ articles.9.title }}</b></h4>
+                                            <h4 class="name__article"><b>{{ articles.6.title }}</b></h4>
+                                            <div class="descr__article">{{ articles.6.description }}</div>
                                         </div>
                                     </div>
                                 </a>
-                                {% endif %}
-                                {% if articles.10 %}
-                                <a href="{% url 'articles:article' articles.10.id %}" class="article__link">
-                                    <div class="sub_three__last">
-                                        <div class="other_info__article">
-                                            <div class="type__category">
-                                                {{ articles.10.category }}
+                                {% if articles.7 %}
+                                    <a href="{% url 'articles:article' articles.7.id %}" class="article__link two">
+                                        <div class="second__block">
+                                            <div class="main__info">
+                                                <div class="type__category">
+                                                    {{ articles.7.category }}
+                                                </div>
+                                                <h4 class="name__article"><b>{{ articles.7.title }}</b></h4>
                                             </div>
-                                            <div class="date__publish">{{ articles.10.dateTime }}</div>
+                                            <div class="date__publish">{{ articles.7.dateTime }}</div>
                                         </div>
-                                        <div class="main_info__article">
-                                            <h4 class="name__article"><b>{{ articles.10.title }}</b></h4>
-                                        </div>
-                                    </div>
-                                </a>
+                                    </a>
                                 {% endif %}
                             </div>
-                        </div>
+                        {% endif %}
+                        {% if articles.8 %}
+                            <div class="third_type__article">
+                                <a href="{% url 'articles:article' articles.8.id %}" class="article__link">
+                                    <div class="sub_one__last other">
+                                        <div class="main__info">
+                                            <div class="type__category">
+                                                {{ articles.8.category }}
+                                            </div>
+                                            <h4 class="name__article"><b>{{ articles.8.title }}</b></h4>
+                                        </div>
+                                        <div class="date__publish">{{ articles.8.dateTime }}</div>
+                                    </div>
+                                </a>
+                                <div class="subs__last">
+                                    {% if articles.9 %}
+                                        <a href="{% url 'articles:article' articles.9.id %}" class="article__link">
+                                            <div class="sub_two__last">
+                                                <div class="other_info__article">
+                                                    <div class="type__category">
+                                                        {{ articles.9.category }}
+                                                    </div>
+                                                    <div class="date__publish">{{ articles.9.dateTime }}</div>
+                                                </div>
+                                                <div class="main_info__article">
+                                                    <h4 class="name__article"><b>{{ articles.9.title }}</b></h4>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    {% endif %}
+                                    {% if articles.10 %}
+                                        <a href="{% url 'articles:article' articles.10.id %}" class="article__link">
+                                            <div class="sub_three__last">
+                                                <div class="other_info__article">
+                                                    <div class="type__category">
+                                                        {{ articles.10.category }}
+                                                    </div>
+                                                    <div class="date__publish">{{ articles.10.dateTime }}</div>
+                                                </div>
+                                                <div class="main_info__article">
+                                                    <h4 class="name__article"><b>{{ articles.10.title }}</b></h4>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    {% endif %}
+                                </div>
+                            </div>
                         {% endif %}
                         <nav class="pagination__block">
                             <ul class="pagination__list">
                                 <li class="switch-btn {% if not articles.has_previous %}disabled{% endif %}">
                                     <a class="link__switch" href="
-                                            {% if articles.has_previous %}{% url 'articles:paginator' articles.previous_page_number %}{% else %}{% endif %}"><i class="fa-solid fa-angle-left arrow"></i><span>Предыдущая</span></a>
+
+
+                                            {% if articles.has_previous %}{% url 'articles:paginator' articles.previous_page_number %}{% else %}{% endif %}"><i
+                                            class="fa-solid fa-angle-left arrow"></i><span>Предыдущая</span></a>
                                 </li>
                                 {% for page in paginator_range %}
                                     {% if page == articles.paginator.ELLIPSIS %}
                                         <li>{{ page }}</li>
                                     {% else %}
-                                    <li><a href="{% url 'articles:paginator' page %}" class="num_page {% if page == articles.number %}current_page{% endif %}">{{ page }}</a></li>
+                                        <li><a href="{% url 'articles:paginator' page %}"
+                                               class="num_page {% if page == articles.number %}current_page{% endif %}">{{ page }}</a>
+                                        </li>
                                     {% endif %}
                                 {% endfor %}
-                                <li class="switch-btn {% if not articles.has_next %} disabled {% endif %}"><a class="link__switch" href="
-                                        {% if articles.has_next %}{% url 'articles:paginator' articles.next_page_number %}{% else %}{% endif %}"><span>Следующая</span><i class="fa-solid fa-angle-right arrow"></i></a>
+                                <li class="switch-btn {% if not articles.has_next %} disabled {% endif %}"><a
+                                        class="link__switch" href="
+
+
+                                        {% if articles.has_next %}{% url 'articles:paginator' articles.next_page_number %}{% else %}{% endif %}"><span>Следующая</span><i
+                                        class="fa-solid fa-angle-right arrow"></i></a>
                                 </li>
                             </ul>
                         </nav>
@@ -217,16 +228,16 @@
                             <h4 class="popular__article"><b>Популярные новости</b></h4>
                             <div class="popular__unit">
                                 {% for popular_article in popular_articles %}
-                                <a href="{% url 'articles:article' popular_article.id %}" class="article__link">
-                                    <div class="popular__block {% if popular_articles.1 == popular_article %} medium {% endif %}">
-                                        <div class="popular__title">
-                                            {{ popular_article.title }}
+                                    <a href="{% url 'articles:article' popular_article.id %}" class="article__link">
+                                        <div class="popular__block {% if popular_articles.1 == popular_article %} medium {% endif %}">
+                                            <div class="popular__title">
+                                                {{ popular_article.title }}
+                                            </div>
+                                            <div class="date_for__popular_block">
+                                                {{ popular_article.dateTime }}
+                                            </div>
                                         </div>
-                                        <div class="date_for__popular_block">
-                                            {{ popular_article.dateTime }}
-                                        </div>
-                                    </div>
-                                </a>
+                                    </a>
                                 {% endfor %}
                             </div>
                         </div>
@@ -235,9 +246,9 @@
                             <form class="subscribe__form" action="{% url 'index' %}" method="post">
                                 {% csrf_token %}
                                 {{ form.email }}
-{#                                <input type="email" name="" id="" placeholder="Email">#}
+                                {#                                <input type="email" name="" id="" placeholder="Email">#}
                                 <button type="submit">
-                                    <div class="subscribe">Подписаться</div>
+                                    <span class="subscribe">Подписаться</span>
                                     <img src="{% static 'image/arrow-right.svg' %}" alt="">
                                 </button>
                             </form>

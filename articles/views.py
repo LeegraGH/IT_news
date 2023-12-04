@@ -2,13 +2,13 @@ from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
 
 from articles.forms import AppealForm, MailForm
-from articles.models import Article, FavouriteArticle
+from articles.models import Article, FavouriteArticle, ArticleCategory
 
 
 # Create your views here.
 
 
-def index(request, page_number=1):
+def index(request, category_number=None, page_number=1):
     if request.method == 'POST':
         form = MailForm(request.POST)
         if form.is_valid():
@@ -16,17 +16,21 @@ def index(request, page_number=1):
             return redirect('index')
     form = MailForm()
 
-    # mail_parse()
-    # habr_parse()
-
-    articles = Article.objects.all().order_by('-id')
+    if category_number:
+        articles = Article.objects.filter(category_id=category_number).order_by('-id')
+        popular_articles = Article.objects.all().order_by('-id')[:3]
+    else:
+        articles = Article.objects.all().order_by('-id')
+        popular_articles = articles[:3]
     paginator = Paginator(articles, per_page=11)
     articles_paginator = paginator.page(page_number)
+    categories = ArticleCategory.objects.all()
     context = {
         'title': "Главная | IT News",
+        'categories': categories,
         'articles': articles_paginator,
         'paginator_range': list(paginator.get_elided_page_range(page_number, on_each_side=2, on_ends=1)),
-        'popular_articles': articles[:3],
+        'popular_articles': popular_articles,
         'form': form
     }
     return render(request, 'articles/index.html', context=context)
@@ -106,11 +110,11 @@ def favourite(request):
 
 
 def favourite_add(request, article_number):
-    article = Article.objects.get(id=article_number)
-    favourite = FavouriteArticle.objects.filter(article=article, user=request.user)
-    if not favourite.exists():
-        favourite = FavouriteArticle(article=article, user=request.user)
-        favourite.save()
+    chosen_article = Article.objects.get(id=article_number)
+    favourite_article = FavouriteArticle.objects.filter(article=chosen_article, user=request.user)
+    if not favourite_article.exists():
+        favourite_article = FavouriteArticle(article=chosen_article, user=request.user)
+        favourite_article.save()
 
     return redirect(request.META['HTTP_REFERER'])
 
