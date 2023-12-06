@@ -19,17 +19,19 @@
                                     <div class="type__category">{{ article.category }}</div>
                                     <div class="date__publish">{{ article.dateTime }}</div>
                                 </div>
-                                <div class="favourite-toggle">
-                                    {% if favourite %}
-                                        <a href="{% url 'articles:favourite_remove' favourite.0.id %}">
-                                            <i class="fa-solid fa-star"></i>
-                                        </a>
-                                    {% else %}
-                                        <a href="{% url 'articles:favourite_add' article.id %}">
-                                            <i class="fa-regular fa-star"></i>
-                                        </a>
-                                    {% endif %}
-                                </div>
+                                {% if user.is_authenticated %}
+                                    <div class="favourite-toggle">
+                                        {% if favourite %}
+                                            <a href="{% url 'articles:favourite_remove' favourite.0.id %}">
+                                                <i class="fa-solid fa-star"></i>
+                                            </a>
+                                        {% else %}
+                                            <a href="{% url 'articles:favourite_add' article.id %}">
+                                                <i class="fa-regular fa-star"></i>
+                                            </a>
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
                             </div>
                             <h4 class="name__article"><b>{{ article.title }}</b></h4>
                             <div class="main_info__article">

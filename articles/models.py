@@ -48,7 +48,7 @@ class Article(models.Model):
 
     title = models.CharField(max_length=150)
     information = models.TextField()
-    image = models.ImageField(null=True, blank=True)
+    image = models.ImageField(null=True, blank=True, max_length=500)
     dateTime = models.DateTimeField(auto_now_add=True)
     category = models.ForeignKey(to=ArticleCategory, on_delete=models.PROTECT)
 
